@@ -132,7 +132,7 @@ var instructions = {
     type: "instructions",
     pages: [
         generate_html("Welcome!", font_colour) + generate_html("Click next or press the right arrow key to proceed.", font_colour),
-        generate_html("In this task, you'll see sequences of black squares (&#9632;) and white squares (&#9633;)", font_colour) + generate_html("Your goal is to keep a count of each of the two types of symbols.", font_colour),
+        generate_html("In this task, you'll see sequences of black squares (&#9632;) and white circles (&#9675;)", font_colour) + generate_html("Your goal is to keep a count of each of the two types of symbols.", font_colour),
         generate_html("Next up is a practice trial.", font_colour) + generate_html("Your data will NOT be recorded.", font_colour) + generate_html("Click next or press the right arrow key to begin.", font_colour)],
     show_clickable_nav: true,
     show_page_number: true,
@@ -149,7 +149,7 @@ var instructions2 = {
 
 var symbols = [ // define symbols
     { symbol: "<div style='font-size:200px;'>&#9632;</div>" },
-    { symbol: "<div style='font-size:200px;'>&#9633;</div>" }
+    { symbol: "<div style='font-size:200px;'>&#9675;</div>" }
 ];
 
 var fixation = { // define fixation
@@ -221,7 +221,7 @@ var response = { // collect response from subject
     ],
     timeline_variables: [
         { symbol: '<div style="transform: translateY(-30px); font-size:25px;"> How many &#9632; symbols </div>' },
-        { symbol: '<div style="transform: translateY(-30px); font-size:25px;"> How many &#9633; symbols </div>' }
+        { symbol: '<div style="transform: translateY(-30px); font-size:25px;"> How many &#9675; symbols </div>' }
     ],
     data: { event: "response" },
     on_finish: function (data) {
@@ -237,9 +237,9 @@ var response = { // collect response from subject
 var feedback = { // show feedback to subject
     type: "html-button-response",
     stimulus: function () {
-        text = "<p>Actual counts</p><p>" + n_dollar + " &#9632; and " + n_hash + " &#9633;<p></p>";
+        text = "<p>Actual counts</p><p>" + n_dollar + " &#9632; and " + n_hash + " &#9675;<p></p>";
         if (show_performance) {
-            counts = "<p>Your counts</p><p>" + responses[0] + " &#9632; and " + responses[1] + " &#9633;<p></p>";
+            counts = "<p>Your counts</p><p>" + responses[0] + " &#9632; and " + responses[1] + " &#9675;<p></p>";
             text = counts + text;
         }
         return "<div style='font-size:25px;'>" + text + "</div>";
