@@ -23,16 +23,6 @@
 </head>
 
 <body>
-    <div>
-    <span style="font-size: 24px;">
-      <br><br>
-      If you are seeing this message for <span style="color: rgb(255, 0, 0);"><b>more than 5 minutes</b></span>,<br>
-      please screen-capture this screen and send the image to us.
-      <br><br>
-      <span style="font-size: 28px;">We are very sorry for the inconvenience.</span>
-    </span>
-  </div>
-
   <!-- Change 2: Adding `display_stage` CSS and Div -->
   <style>
     #display_stage_background {
@@ -62,17 +52,6 @@
 <script src="https://zyzyxzy.github.io/lab_exp/tasks/symbolcount/task-forqual.js"></script>
 
 <script>
-
-var timeline = [];
-//timeline = create_consent(timeline, taskinfo);
-//timeline = check_same_different_person(timeline);
-
-timeline.push(instructions);
-timeline.push(practice_trial);
-timeline.push(instructions2);
-timeline.push(trial);
-timeline.push(debrief_block);
-timeline = create_demographics(timeline);
 
   jsPsych.init({
     timeline: timeline,
