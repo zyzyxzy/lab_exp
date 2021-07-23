@@ -62,6 +62,18 @@
 <script src="https://zyzyxzy.github.io/lab_exp/tasks/symbolcount/task-forqual.js"></script>
 
 <script>
+
+var timeline = [];
+//timeline = create_consent(timeline, taskinfo);
+//timeline = check_same_different_person(timeline);
+
+timeline.push(instructions);
+timeline.push(practice_trial);
+timeline.push(instructions2);
+timeline.push(trial);
+timeline.push(debrief_block);
+timeline = create_demographics(timeline);
+
   jsPsych.init({
     timeline: timeline,
     /* Change 1: Using `display_element` */
