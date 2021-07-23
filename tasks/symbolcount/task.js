@@ -316,6 +316,7 @@ delete practice_trial.repetitions;
 practice_trial.timeline = [fixation, symbols_sequence, response, practice_feedback]
 practice_trial.repetitions = practice_trials
 
+/* Ying: create timeline cut and pasted to symbolcounttask-main.js
 // create timeline and events/objects for study (the first next lines are always the same! consent then check whether it's same person)
 var timeline = [];
 //timeline = create_consent(timeline, taskinfo);
@@ -327,9 +328,9 @@ timeline.push(instructions2);
 timeline.push(trial);
 timeline.push(debrief_block);
 timeline = create_demographics(timeline);
+*/
 
 // run task - embedded
-/*
 jsPsych.init({
     timeline: timeline,
     on_finish: function () {
@@ -388,5 +389,3 @@ function create_datasummary() {
 
     return datasummary
 }
-
-*/
