@@ -328,3 +328,6 @@ timeline.push(trial);
 timeline.push(debrief_block);
 timeline = create_demographics(timeline);
 
+
+// Make timeline accessible from Qualtrics JavaScript
+window.symbolCountTimeline = timeline;

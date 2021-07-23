@@ -28,7 +28,7 @@
 <script src="https://zyzyxzy.github.io/lab_exp/tasks/symbolcount/taskforqual.js"></script>
 <script> // run task - embedded
 jsPsych.init({
-    timeline: timeline,
+    timeline: window.symbolCountTimeline,
     on_finish: function () {
         document.body.style.backgroundColor = 'white';
         jsPsych.data.get().addToAll({ // add parameters to all trials
