@@ -11,7 +11,7 @@ var info_ = create_info_(taskinfo);  // initialize subject id and task parameter
 if (info_.subject && info_.time) {
     taskinfo.redirect_url = taskinfo.redirect_url + '?id=' + info_.subject + '&time=' + info_.time;
 }
-const debug = true;  // true to print messages to console and display json results
+const debug = false;  // true to print messages to console and display json results
 var font_colour = "black";
 var background_colour = "white";
 set_colour(font_colour, background_colour);
