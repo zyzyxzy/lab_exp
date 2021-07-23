@@ -30,8 +30,8 @@ var fixation_duration = 500;  // fixation duration
 var inter_symbol_duration = 400;  // gap between consecutive symbols
 
 if (debug) {
-    symbol_duration = 100
-    inter_symbol_duration = 0
+    symbol_duration = 100;
+    inter_symbol_duration = 0;
 }
 
 // parameters below typically don't need to be changed
@@ -42,7 +42,7 @@ var n_hash = 0;  // hash counter on each trial
 var itis = iti_exponential(low = 100, high = 5000);  // generate array of ITIs
 var choices = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'];
 var responses = [];  // subject's response on each trial $ and #
-var switch_intensity = { 1: 2.4, 2: 2.2, 3: 1.8, 4: 1.5, 5: 1.3 } // task difficulty parameters
+var switch_intensity = { 1: 2.4, 2: 2.2, 3: 1.8, 4: 1.5, 5: 1.3 }; // task difficulty parameters
 
 // set up adaptive procedure
 if (adaptive) {
@@ -88,7 +88,7 @@ function determine_sequence(reps, symbols, trial_difficulty, verbose) {
                 });
                 n_symbol = random_choice(other_symbols);
             }
-            sequence.push(n_symbol)
+            sequence.push(n_symbol);
         }
     }
     if (verbose && debug) {
@@ -132,7 +132,7 @@ var instructions = {
     type: "instructions",
     pages: [
         generate_html("Welcome!", font_colour) + generate_html("Click next or press the right arrow key to proceed.", font_colour),
-        generate_html("In this task, you'll see sequences of dollar signs ($) and hash/pound symbols (#)", font_colour) + generate_html("Your goal is to keep a count of each of the two types of symbols.", font_colour),
+        generate_html("In this task, you'll see sequences of black squares (&#9632;) and white squares (&#9633;)", font_colour) + generate_html("Your goal is to keep a count of each of the two types of symbols.", font_colour),
         generate_html("Next up is a practice trial.", font_colour) + generate_html("Your data will NOT be recorded.", font_colour) + generate_html("Click next or press the right arrow key to begin.", font_colour)],
     show_clickable_nav: true,
     show_page_number: true,
@@ -148,8 +148,8 @@ var instructions2 = {
 };
 
 var symbols = [ // define symbols
-    { symbol: "<div style='font-size:80px;'>$</div>" },
-    { symbol: "<div style='font-size:80px;'>#</div>" }
+    { symbol: "<div style='font-size:200px;'>&#9632;</div>" },
+    { symbol: "<div style='font-size:200px;'>&#9633;</div>" }
 ];
 
 var fixation = { // define fixation
@@ -220,8 +220,8 @@ var response = { // collect response from subject
         }
     ],
     timeline_variables: [
-        { symbol: '<div style="transform: translateY(-30px); font-size:25px;"> How many $ symbols </div>' },
-        { symbol: '<div style="transform: translateY(-30px); font-size:25px;"> How many # symbols </div>' }
+        { symbol: '<div style="transform: translateY(-30px); font-size:25px;"> How many &#9632; symbols </div>' },
+        { symbol: '<div style="transform: translateY(-30px); font-size:25px;"> How many &#9633; symbols </div>' }
     ],
     data: { event: "response" },
     on_finish: function (data) {
@@ -237,9 +237,9 @@ var response = { // collect response from subject
 var feedback = { // show feedback to subject
     type: "html-button-response",
     stimulus: function () {
-        text = "<p>Actual counts</p><p>" + n_dollar + " $ and " + n_hash + " #<p></p>";
+        text = "<p>Actual counts</p><p>" + n_dollar + " &#9632; and " + n_hash + " &#9633;<p></p>";
         if (show_performance) {
-            counts = "<p>Your counts</p><p>" + responses[0] + " $ and " + responses[1] + " #<p></p>";
+            counts = "<p>Your counts</p><p>" + responses[0] + " &#9632; and " + responses[1] + " &#9633;<p></p>";
             text = counts + text;
         }
         return "<div style='font-size:25px;'>" + text + "</div>";
@@ -315,14 +315,6 @@ delete practice_trial.timeline;
 delete practice_trial.repetitions;
 practice_trial.timeline = [fixation, symbols_sequence, response, practice_feedback]
 practice_trial.repetitions = practice_trials
-
-
-
-
-
-
-
-
 
 // create timeline and events/objects for study (the first next lines are always the same! consent then check whether it's same person)
 var timeline = [];
