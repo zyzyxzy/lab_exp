@@ -328,3 +328,19 @@ var timeline = [];
     timeline.push(debrief_block);
     timeline = create_demographics(timeline);
 // run task - embedded
+jsPsych.init({
+    timeline: timeline,
+    display_element: 'display_stage',
+    on_finish: function () {
+        document.body.style.backgroundColor = 'white';
+
+        if (debug) {
+            jsPsych.data.displayData();
+        }
+
+        info_.tasks_completed.push(taskinfo.uniquestudyid);
+        info_.current_task_completed = 1;
+        localStorage.setObj('info_', info_);
+        submit_data(jsPsych.data.get().json(), taskinfo.redirect_url);
+    }
+});
