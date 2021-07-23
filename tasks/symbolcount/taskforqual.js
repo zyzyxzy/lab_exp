@@ -318,29 +318,14 @@ practice_trial.repetitions = practice_trials
 
 // create timeline and events/objects for study (the first next lines are always the same! consent then check whether it's same person)
 var timeline = [];
-    //timeline = create_consent(timeline, taskinfo);
-    //timeline = check_same_different_person(timeline);
-    
-    timeline.push(instructions);
-    timeline.push(practice_trial);
-    timeline.push(instructions2);
-    timeline.push(trial);
-    timeline.push(debrief_block);
-    timeline = create_demographics(timeline);
-// run task - embedded
-jsPsych.init({
-    timeline: timeline,
-    display_element: 'display_stage',
-    on_finish: function () {
-        document.body.style.backgroundColor = 'white';
+//timeline = create_consent(timeline, taskinfo);
+//timeline = check_same_different_person(timeline);
 
-        if (debug) {
-            jsPsych.data.displayData();
-        }
+timeline.push(instructions);
+timeline.push(practice_trial);
+timeline.push(instructions2);
+timeline.push(trial);
+timeline.push(debrief_block);
 
-        info_.tasks_completed.push(taskinfo.uniquestudyid);
-        info_.current_task_completed = 1;
-        localStorage.setObj('info_', info_);
-        submit_data(jsPsych.data.get().json(), taskinfo.redirect_url);
-    }
-});
+// Make timeline accessible from Qualtrics JavaScript
+window.symbolCountTimeline = timeline;
