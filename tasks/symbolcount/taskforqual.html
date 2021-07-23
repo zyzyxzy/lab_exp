@@ -25,6 +25,21 @@
 <body></body>
 
 <!-- load task javascript -->
-<script src="https://zyzyxzy.github.io/lab_exp/tasks/symbolcount/task.js"></script>
+<script src="https://zyzyxzy.github.io/lab_exp/tasks/symbolcount/taskforqual.js"></script>
+<script>
+jsPsych.init({
+    timeline: window.symbolCountTimeline,
+    display_element: "jspsych_timeline",
+    on_finish: function () {
+      var trials = jsPsych.data.get().filter({ event: "feedback" });
+      var correct_trials = trials.filter({ acc: 1 });
+      var accuracy = Math.round(
+        (correct_trials.count() / trials.count()) * 100
+      ); 
+    },
+  });
+</script>
+<div id="jspsych_timeline" style="height: 10em"></div>
+<span style="color: white;">Do not remove</span>
 
 </html>
