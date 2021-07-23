@@ -328,21 +328,3 @@ timeline.push(trial);
 timeline.push(debrief_block);
 timeline = create_demographics(timeline);
 
-// run task - embedded
-jsPsych.init({
-    timeline: timeline,
-    on_finish: function () {
-        document.body.style.backgroundColor = 'white';
-        jsPsych.data.get().addToAll({ // add parameters to all trials
-            total_time: jsPsych.totalTime() / 60000,
-        });
-        if (debug) {
-            jsPsych.data.displayData();
-        }
-
-        info_.tasks_completed.push(taskinfo.uniquestudyid);
-        info_.current_task_completed = 1;
-        localStorage.setObj('info_', info_);
-        submit_data(jsPsych.data.get().json(), taskinfo.redirect_url);
-    }
-});
