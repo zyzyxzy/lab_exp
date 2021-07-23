@@ -177,8 +177,8 @@ var symbols = [
 var fixation = {
   // define fixation
   type: "image-keyboard-response",
-  // stimulus: "<div style='font-size:30px;'>&#9679</div>", // dot as fixation
-  stimulus: "https://dazzling-engelbart-fa84ed.netlify.app/fixation_white.png", // dot as fixation
+  stimulus: "<div style='font-size:30px;'>&#9679</div>", // dot as fixation
+  //stimulus: "https://dazzling-engelbart-fa84ed.netlify.app/fixation_white.png", // dot as fixation
   stimulus_height: 30,
   stimulus_width: 30,
   choices: jsPsych.NO_KEYS,
