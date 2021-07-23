@@ -331,6 +331,7 @@ timeline = create_demographics(timeline);
 */
 
 // run task - embedded
+/*
 jsPsych.init({
     timeline: timeline,
     on_finish: function () {
@@ -388,4 +389,4 @@ function create_datasummary() {
     })
 
     return datasummary
-}
+}*/
