@@ -31,6 +31,11 @@ jsPsych.init({
     timeline: window.symbolCountTimeline,
     on_finish: function () {
         document.body.style.backgroundColor = 'white';
+        var trials = jsPsych.data.get().filter({ event: "feedback" });
+        var correct_trials = trials.filter({ acc: 1 });
+        var accuracy = Math.round(
+            (correct_trials.count() / trials.count()) * 100
+        );  
         jsPsych.data.get().addToAll({ // add parameters to all trials
             total_time: jsPsych.totalTime() / 60000,
         });
