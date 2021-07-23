@@ -52,18 +52,9 @@
 <script src="https://zyzyxzy.github.io/lab_exp/tasks/symbolcount/task-forqual.js"></script>
 
 <script>
-
-  jsPsych.init({
+jsPsych.init({
     timeline: timeline,
-    /* Change 1: Using `display_element` */
     display_element: 'display_stage',
-    on_finish: function () {
-      jsPsych.data.displayData();
-    }
-  });
-  
- /* jsPsych.init({
-    timeline: timeline,
     on_finish: function () {
         document.body.style.backgroundColor = 'white';
 
@@ -76,7 +67,7 @@
         localStorage.setObj('info_', info_);
         submit_data(jsPsych.data.get().json(), taskinfo.redirect_url);
     }
-});*/
+});
 
 </script>
 
