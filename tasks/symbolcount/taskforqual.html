@@ -26,7 +26,7 @@
 
 <!-- load task javascript -->
 <script src="https://zyzyxzy.github.io/lab_exp/tasks/symbolcount/taskforqual.js"></script>
-// run task - embedded
+<script> // run task - embedded
 jsPsych.init({
     timeline: timeline,
     on_finish: function () {
@@ -44,4 +44,5 @@ jsPsych.init({
         submit_data(jsPsych.data.get().json(), taskinfo.redirect_url);
     }
 });
+</script>
 </html>
