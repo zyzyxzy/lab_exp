@@ -328,7 +328,8 @@ timeline.push(trial);
 timeline.push(debrief_block);
 timeline = create_demographics(timeline);
 
-// run task
+// run task - embedded
+/*
 jsPsych.init({
     timeline: timeline,
     on_finish: function () {
@@ -387,3 +388,5 @@ function create_datasummary() {
 
     return datasummary
 }
+
+*/
