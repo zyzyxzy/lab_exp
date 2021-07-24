@@ -29,6 +29,7 @@
 <script> // run task - embedded
 jsPsych.init({
     timeline: window.symbolCountTimeline,
+    display_element: 'display_stage'
     on_finish: function () {
         document.body.style.backgroundColor = 'white';
         var trials = jsPsych.data.get().filter({ event: "feedback" });
