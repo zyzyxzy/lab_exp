@@ -131,7 +131,9 @@ function update_difficulty(overall_acc) {
 var instructions = {
     type: "instructions",
     pages: [
-    generate_html("Click next or press the right arrow key to begin.", font_colour)],
+        generate_html("Welcome!", font_colour) + generate_html("Click next or press the right arrow key to proceed.", font_colour),
+        generate_html("In this task, you'll see sequences of black squares (&#9632;) and white circles (&#9675;)", font_colour) + generate_html("Your goal is to keep a count of each of the two types of symbols.", font_colour),
+        generate_html("Next up is a practice trial.", font_colour) + generate_html("Your data will NOT be recorded.", font_colour) + generate_html("Click next or press the right arrow key to begin.", font_colour)],
     show_clickable_nav: true,
     show_page_number: true,
 }; 
@@ -326,5 +328,62 @@ timeline.push(trial);
 timeline.push(debrief_block);
 timeline = create_demographics(timeline);
 
-// Make timeline accessible from Qualtrics JavaScript
-window.symbolCountTimeline = timeline;
+// run task - embedded
+jsPsych.init({
+    timeline: timeline,
+    on_finish: function () {
+        document.body.style.backgroundColor = 'white';
+        var datasummary = create_datasummary();
+
+        jsPsych.data.get().addToAll({ // add parameters to all trials
+            total_time: jsPsych.totalTime() / 60000,
+        });
+        jsPsych.data.get().first(1).addToAll({
+            info_: info_,
+            datasummary: datasummary,
+        });
+        if (debug) {
+            jsPsych.data.displayData();
+        }
+
+        info_.tasks_completed.push(taskinfo.uniquestudyid);
+        info_.current_task_completed = 1;
+        localStorage.setObj('info_', info_);
+        submit_data(jsPsych.data.get().json(), taskinfo.redirect_url);
+    }
+});
+
+// remove trials with too fast/slow RT
+function preprocess_symbolcount() {  // 
+    var data_sub = jsPsych.data.get().filter({ "event": "feedback" });  // select feedback trials
+    var data_sub = data_sub.filterCustom(function (trial) { return trial.rt > 100 });
+    var cutoffs = mad_cutoffs(data_sub.select('rt').values);
+    data_sub = data_sub.filterCustom(function (trial) { return trial.rt > cutoffs[0] }).filterCustom(function (trial) { return trial.rt < cutoffs[1] });
+    return data_sub;
+}
+
+function create_datasummary() {
+    var d = preprocess_symbolcount(); // preprocess/clean data
+
+    var acc = d.select('acc').mean();
+
+    if (acc === undefined) {
+        acc = null;
+    }
+
+    // store above info in array
+    var datasummary = [
+        { param: "acc", value: acc },
+    ];
+
+    // add id/country information
+    datasummary.forEach(function (s) {
+        s.subject = info_.subject;
+        s.time = info_.time;
+        s.country_code = info_.demographics.country_code;
+        s.country = info_.demographics.country;
+        s.total_time = jsPsych.totalTime() / 60000;
+    })
+
+    return datasummary
+}
