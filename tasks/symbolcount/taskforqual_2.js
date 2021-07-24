@@ -17,14 +17,14 @@ var background_colour = "white";
 set_colour(font_colour, background_colour);
 
 // DEFINE TASK PARAMETERS (required)
-const trials = 4;               // the total number of trials 
+const trials = 2;               // the total number of trials 
 const practice_trials = 2;
 const max_tasktime_minutes = 5;   // maximum task time in minutes (task ends after this amount of time regardless of how many trials have been completed)
 var reps = 12;                  // the number of symbols per trial
 var difficulty = 1;   // task difficult (1, 2, 3, 4, or 5; 5 is most difficult)
 var adaptive = true;  // adjust difficulty based on accuracy (true/false) (if true, reps and difficulty will be overwritten by difficulty_reps_steps[current_idx])
 var show_performance = true;  // if true, also show subject counts on feedback page
-var show_overall_performance = true; // whether to show overall performance at the end
+var show_overall_performance = false; // whether to show overall performance at the end
 var symbol_duration = 1000;      // each symbol appears for this duration (ms) 
 var fixation_duration = 500;  // fixation duration
 var inter_symbol_duration = 400;  // gap between consecutive symbols
@@ -293,7 +293,7 @@ var debrief_block = {
     type: "html-button-response",
     choices: ['Finish'],
     stimulus: function () {
-        var html = "<p>Click the Finish button below to end the experiment. Thank you! </p>";
+        var html = "<p>You have finished four blocks. Please click >> to proceed. </p>";
         if (show_overall_performance) {
             var trials = jsPsych.data.get().filter({ "event": "feedback" });
             var correct_trials = trials.filter({ "acc": 1 });
@@ -322,7 +322,6 @@ var timeline = [];
 timeline.push(instructions);
 timeline.push(trial);
 timeline.push(debrief_block);
-timeline = create_demographics(timeline);
 
 // run task - embedded
 jsPsych.init({
