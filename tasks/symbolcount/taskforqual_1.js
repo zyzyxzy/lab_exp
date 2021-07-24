@@ -131,7 +131,7 @@ function update_difficulty(overall_acc) {
 var instructions = {
     type: "instructions",
     pages: [
-        generate_html("Welcome!", font_colour) + generate_html("Click next or press the right arrow key to proceed.", font_colour)],
+        generate_html("Click next or press the right arrow key to proceed.", font_colour)],
     show_clickable_nav: true,
     show_page_number: true,
 }; 
