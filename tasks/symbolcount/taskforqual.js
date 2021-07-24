@@ -17,7 +17,7 @@ var background_colour = "white";
 set_colour(font_colour, background_colour);
 
 // DEFINE TASK PARAMETERS (required)
-const trials = 10;               // the total number of trials 
+const trials = 4;               // the total number of trials 
 const practice_trials = 2;
 const max_tasktime_minutes = 5;   // maximum task time in minutes (task ends after this amount of time regardless of how many trials have been completed)
 var reps = 12;                  // the number of symbols per trial
@@ -320,8 +320,6 @@ var timeline = [];
 //timeline = check_same_different_person(timeline);
 
 timeline.push(instructions);
-timeline.push(practice_trial);
-timeline.push(instructions2);
 timeline.push(trial);
 timeline.push(debrief_block);
 timeline = create_demographics(timeline);
