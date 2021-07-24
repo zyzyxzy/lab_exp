@@ -131,9 +131,7 @@ function update_difficulty(overall_acc) {
 var instructions = {
     type: "instructions",
     pages: [
-        generate_html("Welcome!", font_colour) + generate_html("Click next or press the right arrow key to proceed.", font_colour),
-        generate_html("In this task, you'll see sequences of black squares (&#9632;) and white circles (&#9675;)", font_colour) + generate_html("Your goal is to keep a count of each of the two types of symbols.", font_colour),
-        generate_html("Next up is a practice trial.", font_colour) + generate_html("Your data will NOT be recorded.", font_colour) + generate_html("Click next or press the right arrow key to begin.", font_colour)],
+    generate_html("Click next or press the right arrow key to begin.", font_colour)],
     show_clickable_nav: true,
     show_page_number: true,
 }; 
