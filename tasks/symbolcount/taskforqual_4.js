@@ -290,6 +290,14 @@ var trial = { // events in a trial
 }; 
 
 var debrief_block = {
+    type: "instructions",
+    pages: [
+        generate_html("<p>Please click >> to proceed. </p>", font_colour)],
+    show_clickable_nav: false,
+    show_page_number: false,
+}; 
+
+/*var debrief_block = {
     type: "html-button-response",
     choices: ['Finish'],
     stimulus: function () {
@@ -303,7 +311,7 @@ var debrief_block = {
         return html;
     }
 }; 
-
+*/
 var practice_feedback = jsPsych.utils.deepCopy(feedback);
 delete practice_feedback.data;
 practice_feedback.data = {event: 'practice'}
